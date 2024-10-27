@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 
     function Header(){
-  const authStatus =useSelector((state) =>  state.auth.status  )
-  console.log(authStatus)
+  const authStatus =useSelector((state) =>  state.auth.status)
+
   
   const navigate =useNavigate()
   const navItems =[
@@ -36,6 +36,7 @@ import { useNavigate } from "react-router-dom";
         slug :"/add-post",
         active :authStatus,
     },
+   
     
   ]
     return(
@@ -44,7 +45,7 @@ import { useNavigate } from "react-router-dom";
             <nav className="flex">
                 <div className="mr-4">
                     <Link to='/'>
-                    <Logo width="70px" />
+                    <Logo width="50px" className="mx-2 my-0" />
                     </Link>
                 </div>
                 <ul className="flex ml-auto">

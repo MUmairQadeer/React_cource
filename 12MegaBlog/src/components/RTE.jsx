@@ -1,10 +1,11 @@
 import React, { StrictMode } from "react";
 import {Editor } from '@tinymce/tinymce-react' ;
+import { Controller } from "react-hook-form";
 
 export default function RTE({name ,control ,label ,defaultValue=""}){
- retrun (
+ return (
   <div className="w-full">
-    {label && <label className='text-sm text-gray-600'>
+    {label && <label className='inline-block mb-1 pl-1'>
      {label} </label>} 
 
      
@@ -13,6 +14,7 @@ export default function RTE({name ,control ,label ,defaultValue=""}){
     control={control}
     render={({field: {onChange}}) => (
         <Editor
+        apiKey="blnin04mnzv3i4sfzbtqwg5uw5c4xi087d6dy0jxsj9osw4u"
         initialValue={defaultValue}
         init={{
             initialValue: defaultValue,
@@ -41,7 +43,7 @@ export default function RTE({name ,control ,label ,defaultValue=""}){
                 "anchor",
             ],
             toolbar:
-            "undo redo | blocks | image | bold italic forecolor | alignleft aligncenter bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help",
+            "undo redo | blocks | image | bold italic forecolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help",
             content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }"
         }}
         onEditorChange={onChange}

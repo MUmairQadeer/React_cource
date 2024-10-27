@@ -1,8 +1,12 @@
 import React from "react";
  
-function Logo({width ='100%'}){
+function Logo({width ='25%' , ...props}){
     return (
-        <div>Logo</div>
+        <img width={width} 
+        
+    className={` ${props.className}`}
+    src="http://www.carlogos.org/logo/BMW-logo-black-2048x2048.png">
+        </img>
     )
 }
 export default Logo;

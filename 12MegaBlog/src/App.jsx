@@ -2,9 +2,8 @@ import React ,{useState ,useEffect} from 'react'
 import {useDispatch} from 'react-redux'
 import authService from "./appwrite/auth"
 import {login,logout} from "./store/authSlice"
-
-import conf from './conf/conf'
 import './App.css'
+import { Outlet } from 'react-router-dom'
 
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
@@ -24,20 +23,21 @@ function App() {
       }
     })
     .finally(()=> setLoading(false))
+    
   },[])
-
+ 
  return !loading ?(
-  <div className='main-h-screen flex flex-wrap content-between
+  <div className='min-h-screen flex flex-wrap content-between
   bg-gray-400'>
-    <div className="w-full-block">
+    <div className="w-full block">
       <Header />
       <main>
-        {/* <Outlet /> */}
+        <Outlet />
       </main>
       <Footer />
     </div>
   </div>
- ) : console.log("loading")
+ )  :null 
 }
 
 export default App

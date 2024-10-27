@@ -1,6 +1,7 @@
 import React,{useEffect ,useState} from "react";
 import appwriteService from "../appwrite/config"
 import {Container ,PostCard} from '../components'
+import { useSelector } from "react-redux";
 
 export default function Home(){
 const [posts ,setPosts] =useState([])
@@ -9,9 +10,10 @@ useEffect(()=>{
         if(posts){
             setPosts(posts.documents)
         }
+
     })
 },[])
-
+const userData = useSelector((state) => state.auth.userData);
 
         if(posts.length === 0){
             return (
@@ -21,7 +23,10 @@ useEffect(()=>{
                             <div className="p-2 w-full">
                                 <h1 className="text-2xl font-bold
                                 hover:text-gray-500">
-                                    Login to read Posts
+                                  {userData ? "Loading...":
+                                    "Login To Read Posts"
+                                    }
+                                     
                                 </h1>
                             </div>
                         </div>
@@ -34,8 +39,8 @@ useEffect(()=>{
                 <Container>
                     <div className="flex flex-wrap">
                         {posts.map((post) =>(
-                            <div className="p-2 w-1/4">
-                                <PostCard {...post} />
+                            <div  key={post.$id} className="p-2 w-1/4">
+                                <PostCard {...post}  />
                             </div>
                         ))}
                     </div>
